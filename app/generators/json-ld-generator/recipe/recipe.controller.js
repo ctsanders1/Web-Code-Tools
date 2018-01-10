@@ -9,6 +9,7 @@
       creator: '',
       description: '',
       ingredients: '',
+      instructions: '',
       prepTime: '',
       cookTime: '',
       totalTime: '',
@@ -19,7 +20,7 @@
 
     this.jsonLd = function() {
       var html = '<script type="application/ld+json">';
-      
+
       html += '\n{\n  "@context": "http://schema.org/",';
 
       html += '\n  "@type": "Recipe",';
@@ -30,12 +31,15 @@
 
       var ingredientsList = this.data.ingredients.split("\n");
       html += '\n  "recipeIngredient": [';
+
       for (var i = 0; i < ingredientsList.length; ++i) {
         html += '\n    "' + ingredientsList[i] + '"';
         if (i < (ingredientsList.length - 1)) html += ',';
       }
+
       html += '\n  ],';
 
+      html += '\n  "recipeInstructions": "' + this.data.instructions + '",';
       html += '\n  "prepTime": "' + getISOTime(this.data.prepTime) + '",';
       html += '\n  "cookTime": "' + getISOTime(this.data.cookTime) + '",';
       html += '\n  "totalTime": "' + getISOTime(this.data.totalTime) + '",';
@@ -45,7 +49,7 @@
         html += ',';
         html += '\n  "nutrition": {';
         html += '\n    "@type": "NutritionInformation",';
-        
+
         if (this.data.calories) {
           html += '\n    "calories": "' + this.data.calories + '"';
         }
@@ -57,7 +61,7 @@
         if (this.data.fat) {
           html += '\n    "fatContent": "' + this.data.fat + '"';
         }
-        
+
         html += '\n  }';
       }
 

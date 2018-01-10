@@ -34,6 +34,14 @@
   </div>
 </div>
 <div class="form-group" data-abm-form-group>
+  <div class="col-sm-12">
+    <label data-wct-label for="inputInstructions">Instructions</label>
+    <textarea data-wct-textarea id="inputInstructions" rows="4" maxlength="2000"
+    placeholder="Preheat the oven to 350 degrees. Mix all ingredients in a bowl. Pour the mixture into a loaf pan and bake for one hour."
+    data-ng-model="ctrl.data.instructions" data-abm-form-control></textarea>
+  </div>
+</div>
+<div class="form-group" data-abm-form-group>
   <div class="col-sm-4">
     <label data-wct-label for="inputPrepTime">Prep Time (Minutes)</label>
     <input data-wct-input-text id="inputPrepTime" placeholder="i.e. 10"
