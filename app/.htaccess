@@ -1,124 +1,18 @@
-RewriteEngine On
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # If an existing asset or directory is requested go to it as it is
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
 RewriteRule ^ - [L]
 
-RewriteCond %{HTTP_HOST} cygenic.com$
-RewriteRule ^(.*)$ "http://webcodetools.com/$1" [R=301,L]
-
-RewriteCond %{HTTP_HOST} ^www.webcodetools.com$ [NC]
-RewriteRule ^(.*)$ http://webcodetools.com/$1 [R=301,L]
-
 # If the requested resource doesn't exist, use index.html
 RewriteRule ^ /index.html
 
-### Redirect some old URLs to new ones, in case there are any links to the old ones ###
-
-RewriteRule ^blog/(.*)$ / [R=301,NC,L]
-Redirect 301 /css-generators/h-animation.php  /css-generator/animation
-Redirect 301 /css-generators/r-animation.php  /css-generator/animation
-Redirect 301 /css-generators/v-animation.php  /css-generator/animation
-Redirect 301 /html-generators/deleted-text.php  /html-generator/text-incorrect
-Redirect 301 /html-generators/other-types.php /html-generator/input-text
-
-# After converting to AngularJS
-
-Redirect 301 /css-generators/animation.php        /css-generator/animation
-Redirect 301 /css-generators/background-color.php   /css-generator/background-color
-Redirect 301 /css-generators/background-gradient.php  /css-generator/background-gradient
-Redirect 301 /css-generators/background-image.php   /css-generator/background-image
-Redirect 301 /css-generators/border.php         /css-generator/border
-Redirect 301 /css-generators/border-image.php     /css-generator/border-image
-Redirect 301 /css-generators/border-radius.php      /css-generator/border-radius
-Redirect 301 /css-generators/box-resize.php       /css-generator/box-resize
-Redirect 301 /css-generators/box-shadow.php       /css-generator/box-shadow
-Redirect 301 /css-generators/outline.php        /css-generator/outline
-Redirect 301 /css-generators/overflow.php       /css-generator/overflow
-Redirect 301 /css-generators/visibility.php       /css-generator/visibility
-Redirect 301 /css-generators/opacity.php        /css-generator/opacity
-Redirect 301 /css-generators/filter-blur.php      /css-generator/blur
-Redirect 301 /css-generators/filter-brightness.php    /css-generator/brightness
-Redirect 301 /css-generators/filter-contrast.php    /css-generator/contrast
-Redirect 301 /css-generators/filter-grayscale.php   /css-generator/grayscale
-Redirect 301 /css-generators/filter-hue-rotate.php    /css-generator/hue-rotate
-Redirect 301 /css-generators/filter-invert.php      /css-generator/invert
-Redirect 301 /css-generators/filter-saturate.php    /css-generator/saturate
-Redirect 301 /css-generators/filter-sepia.php     /css-generator/sepia
-Redirect 301 /css-generators/columns.php        /css-generator/columns
-Redirect 301 /css-generators/display.php        /css-generator/display
-Redirect 301 /css-generators/list-style.php       /css-generator/list-style
-Redirect 301 /css-generators/cursor.php         /css-generator/cursor
-Redirect 301 /css-generators/letter-spacing.php     /css-generator/letter-spacing
-Redirect 301 /css-generators/line-height.php      /css-generator/line-height
-Redirect 301 /css-generators/tab-size.php       /css-generator/tab-size
-Redirect 301 /css-generators/text-align.php       /css-generator/text-align
-Redirect 301 /css-generators/text-decoration.php    /css-generator/text-decoration
-Redirect 301 /css-generators/text-indent.php      /css-generator/text-indent
-Redirect 301 /css-generators/text-shadow.php      /css-generator/text-shadow
-Redirect 301 /css-generators/text-transform.php     /css-generator/text-transform
-Redirect 301 /css-generators/white-space.php      /css-generator/white-space
-Redirect 301 /css-generators/word-break.php       /css-generator/word-break
-Redirect 301 /css-generators/word-spacing.php     /css-generator/word-spacing
-Redirect 301 /css-generators/word-wrap.php        /css-generator/word-wrap
-Redirect 301 /css-generators/perspective.php      /css-generator/perspective
-Redirect 301 /css-generators/transform.php        /css-generator/transform
-Redirect 301 /css-generators/transition.php       /css-generator/transition
-Redirect 301 /css-generators              /css-generator
-
-Redirect 301 /html-generators/button.php      /html-generator/button
-Redirect 301 /html-generators/check-radio.php   /html-generator/input-checkbox-radio
-Redirect 301 /html-generators/input-color.php   /html-generator/input-color
-Redirect 301 /html-generators/date-time.php     /html-generator/input-date-time
-Redirect 301 /html-generators/input-email.php   /html-generator/input-email
-Redirect 301 /html-generators/file.php        /html-generator/input-file
-Redirect 301 /html-generators/image-button.php    /html-generator/input-image
-Redirect 301 /html-generators/number-range.php    /html-generator/input-number-range
-Redirect 301 /html-generators/search.php      /html-generator/input-search
-Redirect 301 /html-generators/submit.php      /html-generator/input-submit
-Redirect 301 /html-generators/input-tel.php     /html-generator/input-telephone
-Redirect 301 /html-generators/textarea.php      /html-generator/textarea
-Redirect 301 /html-generators/input-text.php    /html-generator/input-text
-Redirect 301 /html-generators/input-url.php     /html-generator/input-url
-Redirect 301 /html-generators/audio.php       /html-generator/audio
-Redirect 301 /html-generators/image.php       /html-generator/image
-Redirect 301 /html-generators/video.php       /html-generator/video
-Redirect 301 /html-generators/bold.php        /html-generator/text-bold
-Redirect 301 /html-generators/cite.php        /html-generator/text-cite
-Redirect 301 /html-generators/mark.php        /html-generator/text-mark
-Redirect 301 /html-generators/italic.php      /html-generator/text-italic
-Redirect 301 /html-generators/incorrect-text.php  /html-generator/text-incorrect
-Redirect 301 /html-generators/underline.php     /html-generator/text-underline
-Redirect 301 /html-generators/bdo.php       /html-generator/text-bi-directional-override
-Redirect 301 /html-generators/quote.php       /html-generator/text-quote
-Redirect 301 /html-generators/code.php        /html-generator/text-code
-Redirect 301 /html-generators/sup-sub.php     /html-generator/text-superscript-subscript
-Redirect 301 /html-generators/meter.php       /html-generator/meter
-Redirect 301 /html-generators/details.php     /html-generator/details
-Redirect 301 /html-generators/dialog.php      /html-generator/dialog
-Redirect 301 /html-generators/iframe.php      /html-generator/iframe
-Redirect 301 /html-generators/progress.php      /html-generator/progress-bar
-Redirect 301 /html-generators/hyperlink.php     /html-generator/hyperlink
-Redirect 301 /html-generators/base.php        /html-generator/base-link
-Redirect 301 /html-generators           /html-generator
-
-Redirect 301 /microdata-generators/aggregate-offers.php   /microdata-generator/aggregate-offer
-Redirect 301 /microdata-generators/aggregate-reviews.php  /microdata-generator/aggregate-rating
-Redirect 301 /microdata-generators/article.php        /microdata-generator/article
-Redirect 301 /microdata-generators/business.php       /microdata-generator/organization
-Redirect 301 /microdata-generators/event.php        /microdata-generator/event
-Redirect 301 /microdata-generators/contact-information.php  /microdata-generator/person
-Redirect 301 /microdata-generators/review.php       /microdata-generator/review
-Redirect 301 /microdata-generators/music-album.php      /microdata-generator/music-album
-Redirect 301 /microdata-generators/music-playlist.php   /microdata-generator/music-playlist
-Redirect 301 /microdata-generators/offer.php        /microdata-generator/product-offer
-Redirect 301 /microdata-generators/recipe.php       /microdata-generator/recipe
-Redirect 301 /microdata-generators/restaurant.php     /microdata-generator/restaurant
-Redirect 301 /microdata-generators/software-application.php /microdata-generator/software-application
-Redirect 301 /microdata-generators/video.php        /microdata-generator/video
-Redirect 301 /microdata-generators              /microdata-generator
-
-Redirect 301 /meta-generator  /meta-tags-generator
-
-Redirect 301 /index.php http://webcodetools.com
+</IfModule>
