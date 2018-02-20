@@ -9,6 +9,7 @@
       creator: '',
       description: '',
       ingredients: '',
+      instructions: '',
       prepTime: '',
       cookTime: '',
       totalTime: '',
@@ -27,11 +28,14 @@
 
       var ingredientsList = this.data.ingredients.split("\n");
       html += '\n    <strong>Ingredients</strong><br>';
+      html += '\n    <ul>';
+
       for (var i = 0; i < ingredientsList.length; ++i) {
-        html += '\n    - <span itemprop="recipeIngredient">' + ingredientsList[i] + '</span>';
-        if (i < (ingredientsList.length - 1)) html += '<br>';
+        html += '\n        <li><span itemprop="recipeIngredient">' + ingredientsList[i] + '</span></li>';
       }
 
+      html += '\n    </ul>';
+      html += '\n    <span itemprop="recipeInstructions">' + this.data.instructions + '</span><br>';
       html += '\n    Prep time: <time datetime="' + getISOTime(this.data.prepTime)
         + '" itemprop="prepTime">' + this.data.prepTime + ' minutes</time><br>';
       html += '\n    Cook time: <time datetime="' + getISOTime(this.data.cookTime)
