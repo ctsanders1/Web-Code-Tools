@@ -13,7 +13,7 @@ https://webcode.tools/css-generator/outline
 https://webcode.tools/css-generator/overflow
 https://webcode.tools/css-generator/visibility
 https://webcode.tools/css-generator/opacity
-https://webcode.tools/css-generator/blurs
+https://webcode.tools/css-generator/blur
 https://webcode.tools/css-generator/brightness
 https://webcode.tools/css-generator/contrast
 https://webcode.tools/css-generator/grayscale
