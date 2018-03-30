@@ -475,9 +475,9 @@ body .container-fluid .well {
 }
 
 .alert-top {
-  background-color: rgba(0,0,0,0.9) !important;
+  background-color: #000;
   border-radius: 5px;
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
   position: absolute;
   right: 8px;
   top: 70px;

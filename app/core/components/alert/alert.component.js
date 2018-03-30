@@ -19,7 +19,11 @@
 
         // Displays the alert.
         function displayAlert() {
-          ctrl.showAlert = true;
+          var showAlert = localStorage.getItem('wct-show-alert');
+
+          if (showAlert === null || showAlert === 'true') {
+            ctrl.showAlert = true;
+          }
         }
 
         // Remove the alert from the queue.
@@ -32,11 +36,13 @@
           // Set 'showAlert' to false to hide any other alert that may
           // be in the queue.
           ctrl.showAlert = false;
+          // Set local storage so that the alert isn't shown again.
+          var showAlert = localStorage.setItem('wct-show-alert', 'false');
           // Give time for the ngHide to animate, so remove from
           // queue after a little delay.
           $timeout(removeAlertFromQueue, 1000);
           // Show the next alert in 5 seconds.
-          $timeout(displayAlert, 5000);
+          // $timeout(displayAlert, 5000);
         };
       }
     ]
