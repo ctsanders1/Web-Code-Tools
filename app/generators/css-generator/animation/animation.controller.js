@@ -28,7 +28,7 @@
         else {
           animationCss += 'infinite';
         }
-        
+
         animationCss += ' ' + this.data.direction + ';';
 
         return animationCss;
@@ -44,8 +44,8 @@
           + '\n    100% { top: ' + this.data.end + 'px; }\n}';
         }
         else if (this.data.type === 'rotate-spin') {
-          return '@keyframes ' + this.data.name + ' {\n    0% { transform: rotate: ( ' + this.data.start + 'deg); }'
-          + '\n    100% { transform: rotate: ( ' + this.data.end + 'deg); }\n}';
+          return '@keyframes ' + this.data.name + ' {\n    0% { transform: rotate(' + this.data.start + 'deg); }'
+          + '\n    100% { transform: rotate(' + this.data.end + 'deg); }\n}';
         }
       }
 
